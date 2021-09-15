@@ -1,0 +1,66 @@
+<h1>Ajout d'un nouvel employé</h1>
+
+<form method="post" action="edit_employee.php">
+	<div class="row g-3">
+    <div>
+      <!-- Numéro de l'employé pour la requête de mise à jour -->
+      <input type="hidden" name="id" value="<?= $employee['employeeNumber'] ?>">
+    </div>
+  		<div class="col-md-6">
+    		<label for="firstName" class="form-label">Prénom :</label>
+    		<input type="text" class="form-control" id="firstName" name="firstName" value="<?= $employee['firstName'] ?>">
+  		</div>
+
+  		<div class="col-md-6">
+    		<label for="lastName" class="form-label">Nom :</label>
+    		<input type="text" class="form-control" id="lastName" name="lastName" value="<?= $employee['lastName'] ?>">
+  		</div>
+
+  		<div class="col-md-6">
+    		<label for="email" class="form-label">Email :</label>
+    		<input type="email" class="form-control" id="email" name="email" value="<?= $employee['email'] ?>">
+  		</div>
+
+  		<div class="col-md-6">
+    		<label for="extension" class="form-label">Extension :</label>
+    		<input type="text" class="form-control" id="extension" name="extension" placeholder="Exemple x1234" value="<?= $employee['extension'] ?>">
+  		</div>
+
+  		<div class="col-md-6">
+    		<label for="jobTitle" class="form-label">Poste :</label>
+    		<input type="text" class="form-control" id="jobTitle" name="jobTitle" value="<?= $employee['jobTitle'] ?>">
+  		</div>
+
+  		<div class="col-md-6">
+    		<label for="office" class="form-label">Bureau :</label>
+    		<select id="office" class="form-select" name="office">
+      			<?php foreach ($offices as $office): ?>
+			            <option
+                  <?php if
+                    ($employee['officeCode'] == $office['officeCode']): ?> selected 
+                  <?php endif ?>
+                  value="<?= $office['officeCode'] ?>"><?= $office['city'] ?>
+                  </option>
+				    <?php endforeach ?>
+    		</select>
+  		</div>
+
+  		<div class="col-md-6">
+    		<label for="manager" class="form-label">Responsable hiérarchique :</label>
+			<select id="manager" class="form-select" id="manager" name="manager">
+				<?php foreach ($managers as $manager): ?>
+      				<option 
+              <?php if 
+                ($employee['reportsTo'] == $manager['employeeNumber']): ?> selected 
+              <?php endif ?>
+              value="<?= $manager['employeeNumber'] ?>"><?= $manager['firstName'] ?> <?= $manager['lastName'] ?>
+              </option>
+      			<?php endforeach ?>
+			</select>
+  		</div>
+
+  		<div class="col-12 d-flex justify-content-center">
+    		<button type="submit" class="btn btn-primary">Modifier</button>
+  		</div>
+	</div>
+</form>

@@ -1,0 +1,36 @@
+<h1>Liste des employés</h1>
+	<!-- ### Liste des employés
+
+		Afficher tous les employés de notre table *employees* dans un tableau HTML.
+		On affichera le nom et prénom de l'employé, l'email, le numéro (*employeeNumber*) et le poste.
+		Comme pour l'exercice des commandes, on mettre un lien sur le numéro de l'employé qui nous enverra vers le détail de l'employé (page *show_employee.php*). -->
+
+	<table class="table table-striped table-hover">
+		<thead>
+			<tr>
+				<th>Numéros</th>
+				<th>Prénom</th>
+				<th>Nom</th>
+				<th>Email</th>
+				<th>Poste</th>
+			</tr>
+		</thead>
+		<tbody>
+			<?php foreach ($employees as $employee): ?>
+				<tr>
+					<td>
+						<a href="show_employee.php?id=<?= $employee['employeeNumber'] ?>"><?= $employee['employeeNumber'] ?>
+						</a>
+					</td>
+					<td><?= $employee['firstName'] ?></td>
+					<td><?= $employee['lastName'] ?></td>
+					<td><?= $employee['email'] ?></td>
+					<td><?= $employee['jobTitle'] ?></td>
+					<td>
+						<a href="edit_employee.php?id=<?= $employee['employeeNumber'] ?>"><i class="fas fa-edit"></i> Mettre à jour</a>
+						 | <a href="delete_employee.php?id=<?= $employee['employeeNumber'] ?>"><i class="fas fa-times"></i> Supprimer</a>
+					</td>
+				</tr>
+			<?php endforeach ?>
+		</tbody>
+	</table>

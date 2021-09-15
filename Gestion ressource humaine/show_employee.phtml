@@ -1,0 +1,28 @@
+<h1>Fiche infos de <?= $employee['firstName'] ?> <?= strtoupper($employee['lastName']) ?></h1>
+
+	<dl>
+		<dt>Email</dt>
+		<dd><?= $employee['email'] ?></dd>
+		<dt>Poste</dt>
+		<dd><?= $employee['jobTitle'] ?></dd>
+		<?php if (isset($employee['managerFirstName'])): ?>
+			<dt>Responsable hiérarchique</dt>
+			<dd><?= $employee['managerFirstName'] ?> <?= $employee['managerLastName'] ?></dd>
+		<?php endif ?>
+		<dt>Bureau</dt>
+		<dd><?= $employee['addressLine1'] ?>, <?= $employee['postalCode'] ?> <?= $employee['city'] ?>, <?= $employee['country'] ?></dd>
+		<dt>Clients</dt>
+		<dd>
+			<ul>
+				<?php foreach ($customers as $customer): ?>
+					<li><?= $customer['customerName'] ?> (<?= $customer['country'] ?>)</li>
+				<?php endforeach ?>
+			</ul>
+		</dd>
+	</dl>
+
+	<nav class="mt-3">
+		<a href="index.php">Retour à la liste des employés</a>
+	</nav>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<h1>Ajout d'un nouvel employé</h1>
+
+<form method="post" action="add_employee.php">
+	<div class="row g-3">
+  		<div class="col-md-6">
+    		<label for="firstName" class="form-label">Prénom :</label>
+    		<input type="text" class="form-control" id="firstName" name="firstName">
+  		</div>
+
+  		<div class="col-md-6">
+    		<label for="lastName" class="form-label">Nom :</label>
+    		<input type="text" class="form-control" id="lastName" name="lastName">
+  		</div>
+
+  		<div class="col-md-6">
+    		<label for="email" class="form-label">Email :</label>
+    		<input type="email" class="form-control" id="email" name="email">
+  		</div>
+
+  		<div class="col-md-6">
+    		<label for="extension" class="form-label">Extension :</label>
+    		<input type="text" class="form-control" id="extension" name="extension" placeholder="Exemple x1234">
+  		</div>
+
+  		<div class="col-md-6">
+    		<label for="jobTitle" class="form-label">Poste :</label>
+    		<input type="text" class="form-control" id="jobTitle" name="jobTitle">
+  		</div>
+
+  		<div class="col-md-6">
+    		<label for="office" class="form-label">Bureau :</label>
+    		<select id="office" class="form-select" name="office">
+      			<?php foreach ($offices as $office): ?>
+					<option value="<?= $office['officeCode'] ?>"><?= $office['city'] ?></option>
+				<?php endforeach ?>
+    		</select>
+  		</div>
+
+  		<div class="col-md-6">
+    		<label for="manager" class="form-label">Responsable hiérarchique :</label>
+			<select id="manager" class="form-select" id="manager" name="manager">
+				<?php foreach ($employees as $employee): ?>
+      				<option value="<?= $employee['employeeNumber'] ?>"><?= $employee['firstName'] ?> <?= $employee['lastName'] ?></option>
+      			<?php endforeach ?>
+			</select>
+  		</div>
+
+  		<div class="col-12 d-flex justify-content-center">
+    		<button type="submit" class="btn btn-primary">Ajouter</button>
+  		</div>
+	</div>
+</form>
